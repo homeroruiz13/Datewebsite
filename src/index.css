@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-yellow: #ffd700;
+  --light-yellow: #fff8dc;
+  --medium-yellow: #f5e6a8;
+  --dark-yellow: #e6d26f;
+  --gold: #b8860b;
+  --dark-gold: #8b7355;
+  --text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  --box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  --border-radius: 30px;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+  background: linear-gradient(135deg, var(--light-yellow), var(--medium-yellow), var(--dark-yellow));
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  body {
+    font-size: 16px; /* Prevent zoom on input focus */
+    touch-action: manipulation;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .floating-photo {
+    pointer-events: none; /* Disable hover effects on touch devices */
+  }
+} 

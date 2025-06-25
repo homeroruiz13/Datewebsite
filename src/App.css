@@ -1,0 +1,104 @@
+.app {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: linear-gradient(135deg, 
+    var(--light-yellow) 0%, 
+    var(--medium-yellow) 50%, 
+    var(--dark-yellow) 100%);
+  background-attachment: fixed;
+}
+
+.container {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Enhanced background patterns */
+.app::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 105, 180, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(255, 215, 0, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Animated background shapes */
+.app::after {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.02), transparent),
+    linear-gradient(-45deg, transparent, rgba(255, 182, 193, 0.02), transparent);
+  animation: rotateBackground 20s linear infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes rotateBackground {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Enhanced Mobile Responsiveness */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+    min-height: 100vh;
+    justify-content: center;
+  }
+  
+  .app::before {
+    background: 
+      radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.15) 0%, transparent 60%),
+      radial-gradient(circle at 80% 20%, rgba(255, 105, 180, 0.08) 0%, transparent 60%),
+      radial-gradient(circle at 40% 80%, rgba(255, 215, 0, 0.12) 0%, transparent 60%);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0.5rem;
+    justify-content: flex-start;
+    padding-top: 2rem;
+  }
+  
+  .app {
+    background: linear-gradient(135deg, 
+      var(--light-yellow) 0%, 
+      var(--medium-yellow) 30%, 
+      var(--dark-yellow) 70%,
+      var(--medium-yellow) 100%);
+  }
+  
+  .app::before {
+    background: 
+      radial-gradient(circle at 30% 20%, rgba(255, 215, 0, 0.2) 0%, transparent 50%),
+      radial-gradient(circle at 70% 80%, rgba(255, 105, 180, 0.1) 0%, transparent 50%);
+  }
+}
+
+@media (max-width: 360px) {
+  .container {
+    padding: 0.25rem;
+    padding-top: 1rem;
+  }
+} 

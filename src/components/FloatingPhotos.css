@@ -1,0 +1,218 @@
+.floating-photos-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+  overflow: hidden;
+}
+
+.floating-photo {
+  position: absolute;
+  pointer-events: auto;
+  cursor: pointer;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.1));
+}
+
+.photo-frame {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  border-radius: 35px;
+  overflow: hidden;
+  border: 7px solid var(--primary-yellow);
+  box-shadow: 
+    0 0 0 6px rgba(255, 255, 255, 0.8),
+    0 0 60px rgba(255, 215, 0, 0.7),
+    inset 0 0 0 6px rgba(255, 215, 0, 0.5);
+  background: linear-gradient(45deg, var(--light-yellow), var(--medium-yellow));
+  transition: all 0.3s ease;
+}
+
+.photo-frame:hover {
+  transform: scale(1.1);
+  box-shadow: 
+    0 0 0 4px rgba(255, 255, 255, 0.9),
+    0 0 40px rgba(255, 215, 0, 0.6),
+    inset 0 0 0 4px rgba(255, 215, 0, 0.3);
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  transition: transform 0.3s ease;
+}
+
+.photo-frame:hover img {
+  transform: scale(1.05);
+}
+
+.photo-glow {
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  right: -15px;
+  bottom: -15px;
+  border-radius: 25px;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.3) 0%, transparent 70%);
+  pointer-events: none;
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+}
+
+/* Fallback for images that fail to load */
+.photo-frame.placeholder {
+  background: linear-gradient(45deg, var(--primary-yellow), var(--medium-yellow));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+}
+
+.photo-frame.placeholder::before {
+  content: "💕";
+  color: var(--gold);
+  animation: heartBeat 2s ease-in-out infinite;
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+
+
+/* Different sizes for variety - much larger now */
+.floating-photo:nth-child(3n) .photo-frame {
+  width: 480px;
+  height: 480px;
+}
+
+.floating-photo:nth-child(5n) .photo-frame {
+  width: 550px;
+  height: 550px;
+}
+
+.floating-photo:nth-child(7n) .photo-frame {
+  width: 450px;
+  height: 450px;
+}
+
+.floating-photo:nth-child(11n) .photo-frame {
+  width: 520px;
+  height: 520px;
+}
+
+.floating-photo:nth-child(13n) .photo-frame {
+  width: 580px;
+  height: 580px;
+}
+
+/* Different animation speeds */
+.floating-photo:nth-child(2n) {
+  animation-duration: 8s;
+}
+
+.floating-photo:nth-child(3n) {
+  animation-duration: 10s;
+}
+
+.floating-photo:nth-child(4n) {
+  animation-duration: 7s;
+}
+
+/* Various shapes for visual interest */
+.floating-photo:nth-child(odd) .photo-frame {
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+
+.floating-photo:nth-child(even) .photo-frame {
+  border-radius: 20px;
+}
+
+.floating-photo:nth-child(6n) .photo-frame {
+  border-radius: 50%;
+}
+
+/* Mobile responsiveness - still large but scaled for mobile */
+@media (max-width: 768px) {
+  .photo-frame {
+    width: 350px;
+    height: 350px;
+  }
+  
+  .floating-photo:nth-child(3n) .photo-frame {
+    width: 320px;
+    height: 320px;
+  }
+  
+  .floating-photo:nth-child(5n) .photo-frame {
+    width: 380px;
+    height: 380px;
+  }
+  
+  .floating-photo:nth-child(7n) .photo-frame {
+    width: 300px;
+    height: 300px;
+  }
+  
+  .floating-photo:nth-child(11n) .photo-frame {
+    width: 360px;
+    height: 360px;
+  }
+  
+  .floating-photo:nth-child(13n) .photo-frame {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .photo-frame {
+    width: 280px;
+    height: 280px;
+  }
+  
+  .floating-photo:nth-child(3n) .photo-frame {
+    width: 260px;
+    height: 260px;
+  }
+  
+  .floating-photo:nth-child(5n) .photo-frame {
+    width: 310px;
+    height: 310px;
+  }
+  
+  .floating-photo:nth-child(7n) .photo-frame {
+    width: 240px;
+    height: 240px;
+  }
+  
+  .floating-photo:nth-child(11n) .photo-frame {
+    width: 290px;
+    height: 290px;
+  }
+  
+  .floating-photo:nth-child(13n) .photo-frame {
+    width: 330px;
+    height: 330px;
+  }
+  
+  .photo-frame {
+    border-width: 3px;
+  }
+} 
